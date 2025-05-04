@@ -32,6 +32,7 @@ jobs:
 
         - name: upload artifact
           if: steps.test == "failure" || steps.test == "success"
+          uses: actions/upload-artifact@v4
           with:
               name: Mocha-Test-Result
               path: test-results.xml
@@ -59,6 +60,7 @@ jobs:
             run: npm run coverage 
 
           - name: upload artifact
+            uses: actions/upload-artifact@v4
             with:
                 name: code-coverage-Result
                 path: coverage
