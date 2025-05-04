@@ -1,0 +1,39 @@
+name: solar system
+
+on: push
+
+jobs:
+
+  unit-testing: 
+      name: unit test
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: setup node js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 18
+
+        - name: npm test
+          run: npm test
+
+
+  code-coverage:
+        name: unit test
+        needs: unit-testing
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+
+          - name: setup node js
+            uses: actions/setup-node@v4
+            with:
+              node-version: 18
+
+          - name: npm run coverage
+            run: npm run coverage 
