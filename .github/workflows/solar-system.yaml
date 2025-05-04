@@ -23,8 +23,12 @@ jobs:
           with:
             node-version: 18
 
-        - name: install dependencies
-          run: npm install -g mocha
+        - name: Install dependencies
+          run: |
+            npm install
+            npm install --save-dev mocha
+            npm install --save-dev mocha-junit-reporter
+
 
         - name: npm test
           id: test
